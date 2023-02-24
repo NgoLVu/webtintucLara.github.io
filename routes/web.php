@@ -1,9 +1,9 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\TheLoaiController;
-use App\Http\Controllers\LoaitinController;
-use App\Http\Controllers\TinTucController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TypesOfNewsController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
@@ -39,12 +39,12 @@ Route::prefix('user')->name('user.')->group(function(){
     Route::get('/delete/{id}',[UserController::class,'destroy'])->name('delete');
 });
 Route::prefix('category')->name('category.')->group(function(){
-    Route::get('/',[TheLoaiController::class,'index'])->name('index');
-    Route::get('/create',[TheLoaiController::class,'create'])->name('create');
-    Route::post('/create',[TheLoaiController::class,'store'])->name('store');
-    Route::get('/edit/{id}',[TheLoaiController::class,'edit'])->name('edit');
-    Route::post('/update',[TheLoaiController::class,'update'])->name('update');
-    Route::get('/delete/{id}',[TheLoaiController::class,'destroy'])->name('delete');
+    Route::get('/',[CategoryController::class,'index'])->name('index');
+    Route::get('/create',[CategoryController::class,'create'])->name('create');
+    Route::post('/create',[CategoryController::class,'store'])->name('store');
+    Route::get('/edit/{id}',[CategoryController::class,'edit'])->name('edit');
+    Route::post('/update',[CategoryController::class,'update'])->name('update');
+    Route::get('/delete/{id}',[CategoryController::class,'destroy'])->name('delete');
 });
 Route::prefix('slide')->name('slide.')->group(function(){
     Route::get('/',[SlideController::class,'index'])->name('index');
@@ -55,24 +55,25 @@ Route::prefix('slide')->name('slide.')->group(function(){
     Route::get('/delete/{id}',[SlideController::class,'destroy'])->name('delete');
 });
 Route::prefix('Loai-tin')->name('Loaitin.')->group(function(){
-    Route::get('/',[LoaitinController::class,'index'])->name('index');
-    Route::get('/create',[LoaitinController::class,'create'])->name('create');
-    Route::post('/create',[LoaitinController::class,'store'])->name('store');
-    Route::get('/edit/{id}',[LoaitinController::class,'edit'])->name('edit');
-    Route::post('/update',[LoaitinController::class,'update'])->name('update');
-    Route::get('/delete/{id}',[LoaitinController::class,'destroy'])->name('delete');
+    Route::get('/',[TypesOfNewsController::class,'index'])->name('index');
+    Route::get('/create',[TypesOfNewsController::class,'create'])->name('create');
+    Route::post('/create',[TypesOfNewsController::class,'store'])->name('store');
+    Route::get('/edit/{id}',[TypesOfNewsController::class,'edit'])->name('edit');
+    Route::post('/update',[TypesOfNewsController::class,'update'])->name('update');
+    Route::get('/delete/{id}',[TypesOfNewsController::class,'destroy'])->name('delete');
 });
 Route::prefix('Tin-tuc')->name('Tintuc.')->group(function(){
-    Route::get('/',[TinTucController::class,'index'])->name('index');
-    Route::get('/create',[TinTucController::class,'create'])->name('create');
-    Route::post('/create',[TinTucController::class,'store'])->name('store');
-    Route::get('/edit/{id}',[TinTucController::class,'edit'])->name('edit');
-    Route::post('/update',[TinTucController::class,'update'])->name('update');
-    Route::get('/delete/{id}',[TinTucController::class,'destroy'])->name('delete');
+    Route::get('/',[NewsController::class,'index'])->name('index');
+    Route::get('/create',[NewsController::class,'create'])->name('create');
+    Route::post('/create',[NewsController::class,'store'])->name('store');
+    Route::get('/edit/{id}',[NewsController::class,'edit'])->name('edit');
+    Route::post('/update',[NewsController::class,'update'])->name('update');
+    Route::get('/delete/{id}',[NewsController::class,'destroy'])->name('delete');
 });
-Route::get('comment',function(){
-    return view('admin.comment.index');
-})->name('comment');
+Route::prefix('comment')->name('comment.')->group(function(){
+    Route::get('/',[CommentController::class,'index'])->name('index');
+    Route::get('/delete/{id}',[CommentController::class,'destroy'])->name('delete');
+});
 });
 // Phần route ở phía view client
 Route::get('/',[PageController::class,'trangchu'])->name('trangchu');

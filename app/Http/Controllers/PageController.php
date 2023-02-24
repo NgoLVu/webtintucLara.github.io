@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TheLoaiModel;
-use App\Models\LoaiTinModel;
-use App\Models\TinTucModel;
+use App\Models\CategoryModel;
+use App\Models\TypesOfNewsModel;
+use App\Models\NewsModel;
 use App\Models\SildeModel;
 use App\Http\Requests\NewUserRequest;
 use Auth;
@@ -18,10 +18,10 @@ class PageController extends Controller
     private $slide;
     private $tintuc;
     public function __construct(){
-         $this->theloai=new TheLoaiModel();
+         $this->theloai=new CategoryModel();
          $this->slide=new SildeModel();
-         $this->loaitin=new LoaiTinModel();
-         $this->tintuc=new TinTucModel();
+         $this->loaitin=new TypesOfNewsModel();
+         $this->tintuc=new NewsModel();
          $this->user=new UserModel();
          $theloais=$this->theloai::all();
          if(Auth::check()){

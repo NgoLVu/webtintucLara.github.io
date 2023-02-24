@@ -30,7 +30,7 @@
         <a class="nav-link" href="{{route('slide.index')}}">Quản Lý Slide</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('comment')}}">Quản Lý Comment</a>
+        <a class="nav-link" href="{{route('comment.index')}}">Quản Lý Comment</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('user.index')}}">Quản lý người dùng</a>

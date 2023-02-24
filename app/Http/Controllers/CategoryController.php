@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
-use App\Models\TheLoaiModel;
+use App\Models\CategoryModel;
 use App\Http\Requests\CategoryRequest;
-class TheLoaiController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class TheLoaiController extends Controller
     private $category;
     const _Per_Name=4;
     public function __construct(){
-        $this->category=new TheLoaiModel();
+        $this->category=new CategoryModel();
     }
     public function index()
     {
@@ -48,7 +48,7 @@ class TheLoaiController extends Controller
     public function store(CategoryRequest $request)
     {
         $add=[
-            $request->Ten
+            $request->ten
           ];
           $this->category->AddCategory($add);
        //   return view('admin.Categorys.index');

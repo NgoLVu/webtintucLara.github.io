@@ -12,9 +12,51 @@
 
 @extends('layouts.admin')
 @section('title')
-{{-- {{$title}} --}}
+{{$title}}
 @endsection
 
 @section('content')
-<H1 class="text-center">Tính năng đang được cập nhập sau</H1>
+<h2>{{$title}}</h2>
+@if(session('msg'))
+        <div class="alert alert-success">{{session('msg')}}</div>
+
+    @endif
+<hr/>
+<div class="container">
+    <div class="row">
+        <div class="col-12 ">
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th width="3%">STT</th>
+            <th width="3%">ID Người dùng</th>
+            <th>Người dùng</th>
+            <th>Tin tức</th>
+            <th>Nội Dung</th>
+            <th>Thời gian bình luận</th>
+            <th width="5%">Xóa</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(!empty($comments))
+        @foreach($comments as $key=>$item)
+            <tr>
+                <td>{{$key+1}}</td>
+                <td>{{$item->idUser}}</td>
+                <td>{{$item->Name_user}}</td>
+                <td>{{$item->TieuDe}}</td>
+                <td>{{$item->NoiDung}}</td>
+                <td>{{$item->created_at}}</td>
+                <td><a onclick="return confirm('Ban co chac chac muon xoa khong')" href="{{route('comment.delete',['id'=>$item->id])}}" class="btn btn-danger btn-sm">Xóa</a></td>
+            </tr>
+            @endforeach
+    @else
+            <tr>
+                <td colspan="6">Không có bình luận nào</td>
+            </tr>
+    @endif
+</tbody>
+</table>
+{{-- <div class="d-flex justify-content-center">{{$comments->links()}}</div>
+</div> --}}
 @endsection

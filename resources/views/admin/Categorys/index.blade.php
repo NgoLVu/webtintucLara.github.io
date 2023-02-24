@@ -93,8 +93,8 @@
     </div>
     <div class="mb-3">
         <label for="name">Tên danh mục</label>
-        <input type="text" class="form-control" name="Ten" id="tenTheLoai_id" placeholder="Tên danh mục" value="{{old('Ten')}}">
-        @error('name')
+        <input type="text" class="form-control" name="ten" id="tenTheLoai_id" placeholder="Tên danh mục" value="{{old('ten')}}">
+        @error('ten')
         <span style="color:red;">{{$message}}</span>
         @enderror
     </div>

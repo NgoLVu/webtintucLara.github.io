@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
-class TinTucModel extends Model
+class NewsModel extends Model
 {
     use HasFactory;
     protected $table="tb_tintuc";
     public function loaitin(){
         //Tin tuc thuoc mot loai tin
-        return $this->belongsTo('App\Models\LoaiTinModel','idLoaiTin','id');
+        return $this->belongsTo('App\Models\TypesOfNewsModel','idLoaiTin','id');
     }
     public function comment(){
         return $this->hasMany('App\Models\CommentModel','idTinTuc','id');
@@ -44,6 +44,6 @@ class TinTucModel extends Model
     }
     public function DeleteTin($id){
       //  return DB::delete('delete from ' .$this->table.' where id = ?', [$id]);
-        return DB::table($this->table)->where('id',$id)->delete();
+        return DB::table('tb_comment')->where('idTinTuc',$id)->delete() and DB::table($this->table)->where('id',$id)->delete() ;
     }
 }

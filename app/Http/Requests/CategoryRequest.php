@@ -24,18 +24,18 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:5',
+            'ten'=>'required|min:5',
         ];
     }
     public function messages(){
         return [
             'required'=>':attribute bat buoc phai nhap',
-            'name.min'=>':attribute it nhat phai :min ky tu',
+            'ten.min'=>':attribute it nhat phai :min ky tu',
         ];
     }
     public function attributes(){
         return [
-            'name'=>'Ten danh muc',
+            'ten'=>'Ten danh muc',
         ];
     }
 }

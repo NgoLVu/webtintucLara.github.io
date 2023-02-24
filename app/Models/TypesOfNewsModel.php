@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
-class LoaiTinModel extends Model
+class TypesOfNewsModel extends Model
 {
     use HasFactory;
     protected $table="tb_loaitin";
     public function theloai(){
-        return $this->belongsTO('App\Models\TheLoaiModel','idTheLoai','id');
+        return $this->belongsTO('App\Models\CategoryModel','idTheLoai','id');
     }
     public function tintuc(){
-        return $this->hasMany('App\Models\TinTucModel','idLoaiTin','id');
+        return $this->hasMany('App\Models\NewsModel','idLoaiTin','id');
     }
     public function getAllLoaiTin($perPage=null){
         $record=DB::table($this->table)

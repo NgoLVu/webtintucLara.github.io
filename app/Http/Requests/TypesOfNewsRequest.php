@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoaiTinRequest extends FormRequest
+class TypesOfNewsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,16 +25,20 @@ class LoaiTinRequest extends FormRequest
     {
         return [
             'Ten'=>'required',
+            'IdTheLoai'=>'required',
+
+
         ];
     }
     public function messages(){
         return [
-            'required'=>':attribute bat buoc phai nhap'
+            'required'=>':attribute bat buoc phai nhap',
         ];
     }
     public function attributes(){
         return [
             'Ten'=>'Tên loại tin',
+            'IdTheLoai'=>'Tên Thể loại',
         ];
     }
 }

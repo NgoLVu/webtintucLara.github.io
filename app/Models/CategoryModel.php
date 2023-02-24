@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
-class TheLoaiModel extends Model
+class CategoryModel extends Model
 {
     use HasFactory;
     protected $table="tb_theloai";
     public function loaitin(){
         //Lay nhieu loai tin co trong the loai : hasMany
-        return $this->hasMany('App\Models\LoaiTinModel','idTheLoai','id');
+        return $this->hasMany('App\Models\TypesOfNewsModel','idTheLoai','id');
     }
     public function tintuc(){
         //Lay tat ca tin co trong the loai : hasMany
-        return $this->hasManyThrough('App\Models\TinTucModel','App\Models\LoaiTinModel','idTheLoai','idLoaiTin','id');
+        return $this->hasManyThrough('App\Models\NewsModel','App\Models\TypesOfNewsModel','idTheLoai','idLoaiTin','id');
     }
     public function getAllCategory($perPage=null){
         $record= DB::table($this->table);
@@ -28,8 +28,8 @@ class TheLoaiModel extends Model
         return $record;
     }
     public function AddCategory($data){
-         DB::insert('INSERT INTO tb_theloai (ten) VALUES (?)',$data);
-      //  DB::insert('INSERT INTO'.$this->table.' (name) VALUES (?)',$data);
+       //  DB::insert('INSERT INTO tb_theloai (ten) VALUES (?)',$data);
+       DB::insert('INSERT INTO '.$this->table.' (ten) VALUES (?)',$data);
     }
     public function editCategory($id){
         return DB::select('SELECT*FROM '.$this->table.' where id=?',[$id]);

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\LoaiTinRequest;
-use App\Models\LoaiTinModel;
-use App\Models\TheLoaiModel;
+use App\Http\Requests\TypesOfNewsRequest;
+use App\Models\TypesOfNewsModel;
+use App\Models\CategoryModel;
 use DB;
 
 
-class LoaitinController extends Controller
+class TypesOfNewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class LoaitinController extends Controller
     private $loaitin;
     const _Per_Name=4;
     public function __construct(){
-        $this->loaitin=new LoaiTinModel();
+        $this->loaitin=new TypesOfNewsModel();
     }
     public function index()
     {
@@ -48,10 +48,10 @@ class LoaitinController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LoaiTinRequest $request)
+    public function store(TypesOfNewsRequest $request)
     {
         $Add=[
-            $request->idTheLoai,
+            $request->IdTheLoai,
             $request->Ten
         ];
         $this->loaitin->AddLoaiTin($Add);
@@ -102,7 +102,7 @@ class LoaitinController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(LoaiTinRequest $request)
+    public function update(TypesOfNewsRequest $request)
     {
         $id=session('id');
         if(empty($id)){

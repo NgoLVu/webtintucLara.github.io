@@ -69,20 +69,20 @@
     </div>
     <div class="mb-3">
         <label for="name">Thể loại</label>
-        <select name="idTheLoai" id="" class="form-control">
+        <select name="IdTheLoai" id="" class="form-control">
             <option value="0">
                 Chọn thể loại
             </option>
             @if (!@empty($allGroups)){
                 @foreach ($allGroups as $item )
-                <option value="{{$item->id}}" {{old('idTheLoai')==$item->id?'selected':false}}>
+                <option value="{{$item->id}}" {{old('IdTheLoai')==$item->id?'selected':false}}>
                     {{$item->Ten}}
                 </option>
                 @endforeach
             }
             @endif
         </select>
-        @error('idTheLoai')
+        @error('IdTheLoai')
         <span style="color:red;">{{$message}}</span>
         @enderror
     </div>

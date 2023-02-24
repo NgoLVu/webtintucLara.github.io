@@ -35,6 +35,9 @@
                 <div class="social-btn-sp">
                     <h4 style="display: inline-block;">{!! $shareButtons !!}</h4>
               </div>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/tintuc/{{$tintucs->id}}.html" target="_blank">
+                Share
+                </a>
             </div>
             </p>
                 <!-- Blog Comments -->

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TinTucModel;
-use App\Models\LoaiTinModel;
-use App\Http\Requests\TinTucRequest;
+use App\Models\NewsModel;
+use App\Models\TypesOfNewsModel;
+use App\Http\Requests\NewsRequest;
 
-class TinTucController extends Controller
+class NewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class TinTucController extends Controller
     private $tintuc;
     const _Per_Name=4;
     public function __construct(){
-        $this->tintuc=new TinTucModel();
+        $this->tintuc=new NewsModel();
     }
     public function index()
     {
@@ -48,7 +48,7 @@ class TinTucController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TinTucRequest $request)
+    public function store(NewsRequest $request)
     {
         $add=[
             'TieuDe'=>$request->TieuDe,
@@ -109,7 +109,7 @@ class TinTucController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TinTucRequest $request)
+    public function update(NewsRequest $request)
     {
         $id=session('id');
         if(empty($id)){
@@ -141,7 +141,7 @@ class TinTucController extends Controller
             if(!empty($delete[0])){
                $delete= $this->tintuc->DeleteTin($id);
                if($delete){
-                $msg="Xoa in thanh cong";
+                $msg="Xoa tin thanh cong";
                }else{
                 $msg="Ban khong the xoa tin nay ,vui long thu lai";
                }

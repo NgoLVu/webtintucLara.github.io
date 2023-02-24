@@ -59,7 +59,6 @@
             <th>password</th>
             <th>created_at</th>
             <th>updated_at</th>
-            <th>comment</th>
             <th width="5%">Edit</th>
             <th width="5%">Delete</th>
         </tr>
@@ -76,7 +75,6 @@
                     <td style="max-width: 200px;padding: 0"><textarea cols="20" rows="5">{{$item->password}}</textarea></td>
                     <td>{{$item->created_at}}</td>
                     <td>{{$item->updated_at}}</td>
-                    <td>{{$item->comment}}</td>
 
                     <td><a href="{{route('user.edit',['id'=>$item->id])}}" class="btn btn-warning btn-sm">Edit</a></td>
                     <td><a onclick="return confirm('Ban co chac chac muon xoa khong')" href="{{route('user.delete',['id'=>$item->id])}}" class="btn btn-danger btn-sm">Delete</a></td>
